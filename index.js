@@ -3,6 +3,7 @@ const { prompt } = require('inquirer');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
+const template = require('./src/HTML-Template')
 
 const teamArray = []
 // Array of Prompts
@@ -14,11 +15,11 @@ function startApp() {
                 type: 'list',
                 name: 'role',
                 message: 'Select which employee role you would like to add.',
-                choices: ['Engineer', 'Intern','Done']
+                choices: ['Engineer', 'Intern', 'Done']
 
             }
         ]).then((choice) => {
-             // compares answer to a swtich statement to add another employee
+            // compares answer to a swtich statement to add another employee
             switch (choice.role) {
                 case 'Engineer':
                     addEngineer()
@@ -34,7 +35,7 @@ function startApp() {
 
     }
 
- // Manager function using inquierer to ask prompts. 
+    // Manager function using inquierer to ask prompts. 
     const addManager = () => {
         prompt([
             {
@@ -62,73 +63,81 @@ function startApp() {
             const manager = new Manager(managerInfo.name, managerInfo.Id, managerInfo.email, managerInfo.OfficeNumber)
             // Pushes answers into an array
             teamArray.push(manager)
-             // compares answer to a swtich statement above to add another employee
+            // compares answer to a swtich statement above to add another employee
             newEmployee()
         })
     }
- 
+
     const addEngineer = () => {
         prompt([
-        {
-            type: 'input',
-            name: 'name',
-            message: "Enter the engineer's name.",
-        },
-        {
-            type: 'input',
-            name: 'id',
-            message: "Enter the engineer's ID number.",
-        },
-        {
-            type: 'input',
-            name: 'email',
-            message: "Enter the engineer's email.",
-        },
-        {
-            type: 'input',
-            name: 'github',
-            message: "Enter the engineer's github.",
-        },
-        
-    ]).then(engineerInfo => {
-        const engineer = new Engineer(engineerInfo.name, engineerInfo.Id, engineerInfo.email, engineerInfo.github)
-        teamArray.push(engineer)
-        newEmployee()
-    })
+            {
+                type: 'input',
+                name: 'name',
+                message: "Enter the engineer's name.",
+            },
+            {
+                type: 'input',
+                name: 'id',
+                message: "Enter the engineer's ID number.",
+            },
+            {
+                type: 'input',
+                name: 'email',
+                message: "Enter the engineer's email.",
+            },
+            {
+                type: 'input',
+                name: 'github',
+                message: "Enter the engineer's github.",
+            },
 
-}
+        ]).then(engineerInfo => {
+            const engineer = new Engineer(engineerInfo.name, engineerInfo.Id, engineerInfo.email, engineerInfo.github)
+            teamArray.push(engineer)
+            newEmployee()
+        })
 
-    const addIntern = () => 
-    prompt([
-        {
-            type: 'input',
-            name: 'name',
-            message: "Enter the intern's name.",
-        },
-        {
-            type: 'input',
-            name: 'id',
-            message: "Enter the intern's ID number.",
-        },
-        {
-            type: 'input',
-            name: 'email',
-            message: "Enter the intern's email.",
-        },
-        {
-            type: 'input',
-            name: 'school',
-            message: "Enter the intern's school.",
-        },
-    ]).then(internInfo => {
-        const intern = new Intern (internInfo.name, internInfo.Id, internInfo.email, internInfo.school)
-        teamArray.push(intern)
-        newEmployee()
-    })
-    
+    }
+
+    const addIntern = () =>
+        prompt([
+            {
+                type: 'input',
+                name: 'name',
+                message: "Enter the intern's name.",
+            },
+            {
+                type: 'input',
+                name: 'id',
+                message: "Enter the intern's ID number.",
+            },
+            {
+                type: 'input',
+                name: 'email',
+                message: "Enter the intern's email.",
+            },
+            {
+                type: 'input',
+                name: 'school',
+                message: "Enter the intern's school.",
+            },
+        ]).then(internInfo => {
+            const intern = new Intern(internInfo.name, internInfo.Id, internInfo.email, internInfo.school)
+            teamArray.push(intern)
+            newEmployee()
+        })
+
+    const buildTeam = (teamArr) => {
+        const htmlContent = createTemplate(teamArr);
+
+        fs.writeFile('index.HTML', htmlContent, (err) =>
+            // if the HTML was generated, users get a success message. If not, an error msg.
+            err ? console.log(err) : console.log('Successfully created HTML!')
+        );
+    };
+
+
     addManager()
 
 }
-startApp()
-
-
+startApp();
