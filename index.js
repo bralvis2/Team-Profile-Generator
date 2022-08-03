@@ -128,9 +128,7 @@ function startApp() {
         })
 
     const buildTeam = (teamArr) => {
-        const htmlContent = createTemplate(teamArr);
-
-        fs.writeFile('index.HTML', htmlContent, (err) =>
+        fs.writeFile('./dist/index.html', template(teamArr), (err) =>
             // if the HTML was generated, users get a success message. If not, an error msg.
             err ? console.log(err) : console.log('Successfully created HTML!')
         );

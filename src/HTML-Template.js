@@ -1,6 +1,6 @@
-function createTemplate(teamArr){
-    const createManagerCard = (manager)=> {
-        return`<div class="card ba-card" style="width: 18rem;">
+function createTemplate(teamArr) {
+    const createManagerCard = (manager) => {
+        return `<div class="card ba-card" style="width: 18rem;">
         <div class="card-body ba-card-body">
             <h5 class="card-title">${manager.getName()}</h5>
             <p class="card-text"> ☕ Manager</p>
@@ -15,9 +15,7 @@ function createTemplate(teamArr){
     </div>`
 
     }
-    const teamHtml = []
-    teamHtml.push(teamArr.filter(employee => employee.getRole() === 'Manager').map(manager=>createManagerCard(manager)));
-    
+
 
     const createEngineerCard = (engineer) => {
         return `<div class="card ba-card" style="width: 18rem;">
@@ -34,7 +32,7 @@ function createTemplate(teamArr){
         </div>
     </div>`
     }
-   
+
     const createInternCard = (intern) => {
         return `<div class="card ba-card" style="width: 18rem;">
         <div class="card-body ba-card-body">
@@ -50,15 +48,16 @@ function createTemplate(teamArr){
         </div>
     </div> `
     }
+}
 
-    module.exports = teamArr => {
-    return`<!DOCTYPE html>
+module.exports = teamArr => {
+    return `<!DOCTYPE html>
     <html lang="en">
     
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="./style.css"/>
+        <link rel="stylesheet" href="./reset.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="./style.css">
         <title>Welcome to our Team Profile</title>
@@ -73,6 +72,5 @@ function createTemplate(teamArr){
     
     
     </html>`
-    
-    }
+
 }
