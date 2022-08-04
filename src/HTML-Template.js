@@ -13,8 +13,13 @@ function createTemplate(teamArr) {
               </ul>
         </div>
     </div>`
-
     }
+    // const teamHtml = []
+    // teamHtml.push(teamArr.filter(employee => employee.getRole() === 'Manager').map(manager=>createManagerCard(manager)));
+// loop through team array
+// conditional statement based on role
+// assign a variable to helper method
+// push to arry
 
 
     const createEngineerCard = (engineer) => {
