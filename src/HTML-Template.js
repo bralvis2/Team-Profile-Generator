@@ -1,9 +1,32 @@
+const Employee = require("../lib/Employee")
+
+
+
 function createTemplate(teamArr) {
+   let teamHtml = ""
+    console.log(teamArr)
+    for(let i=0;i< teamArr.length;i++){
+        
+        if (teamArr[i].getRole() === 'Manager') {
+            teamHtml += createManagerCard(teamArr[i])
+        } else if (teamArr[i].getRole() === 'Engineer') {
+            teamHtml += createEngineerCard(teamArr[i])
+        } else if (teamArr[i].getRole() === 'Intern') {
+            teamHtml += createInternCard(teamArr[i])
+        }
+    }
+    console.log(teamHtml)
+    return teamHtml
+}
+   
+
+
+
     const createManagerCard = (manager) => {
         return `<div class="card ba-card" style="width: 18rem;">
         <div class="card-body ba-card-body">
             <h5 class="card-title">${manager.getName()}</h5>
-            <p class="card-text"> ☕ Manager</p>
+            <p class="card-text"> ☕ ${manager.getRole()}</p>
         </div>
         <div class="ba">
             <ul class="list-group list-group-flush contact-info">
@@ -14,19 +37,13 @@ function createTemplate(teamArr) {
         </div>
     </div>`
     }
-    // const teamHtml = []
-    // teamHtml.push(teamArr.filter(employee => employee.getRole() === 'Manager').map(manager=>createManagerCard(manager)));
-// loop through team array
-// conditional statement based on role
-// assign a variable to helper method
-// push to arry
 
 
     const createEngineerCard = (engineer) => {
         return `<div class="card ba-card" style="width: 18rem;">
         <div class="card-body ba-card-body">
             <h5 class="card-title">${engineer.getName()}</h5>
-            <p class="card-text">&#x1f97d; Engineer</p>
+            <p class="card-text">&#x1f97d; ${engineer.getRole()}</p>
         </div>
         <div class="ba">
             <ul class="list-group list-group-flush contact-info">
@@ -38,11 +55,12 @@ function createTemplate(teamArr) {
     </div>`
     }
 
+
     const createInternCard = (intern) => {
         return `<div class="card ba-card" style="width: 18rem;">
         <div class="card-body ba-card-body">
             <h5 class="card-title">${intern.getName()}</h5>
-            <p class="card-text"> 👩‍🎓 Intern</p>
+            <p class="card-text"> 👩‍🎓 ${intern.getRole()}</p>
         </div>
         <div class="ba">
             <ul class="list-group list-group-flush contact-info">
@@ -53,7 +71,10 @@ function createTemplate(teamArr) {
         </div>
     </div> `
     }
-}
+
+
+
+
 
 module.exports = teamArr => {
     return `<!DOCTYPE html>
@@ -74,8 +95,23 @@ module.exports = teamArr => {
         </section>
     </body>
     
-    
-    
     </html>`
 
 }
+
+  // loop through team array
+    // conditional statement based on role
+    // assign a variable to helper method
+    // push to arry
+
+    // switch (Employee.getRole()) {
+    //     case 'Manager':
+    //         createManagerCard()
+    //         break;
+    //     case 'Engineer':
+    //         createEngineerCard()
+    //         break;
+    //     case 'Intern':
+    //         createInternCard()
+    //         break;
+    // }

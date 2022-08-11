@@ -27,6 +27,7 @@
 ## Testing
 
 ![Testing](./img/testing-classes.gif?raw=true "Testing Classes")
+ [Testing Video](https://drive.google.com/file/d/1XsxZMISqmA0QOZrIB2lnAxgmiilRQQQI/view)
 
 
  ## Credits & Resources
