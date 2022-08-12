@@ -60,7 +60,7 @@ function startApp() {
             }
         ]).then(managerInfo => {
             // adds manager as a new constant with new info from user
-            const manager = new Manager(managerInfo.name, managerInfo.Id, managerInfo.email, managerInfo.OfficeNumber)
+            const manager = new Manager(managerInfo.name, managerInfo.id, managerInfo.email, managerInfo.officeNumber)
             // Pushes answers into an array
             teamArray.push(manager)
             // compares answer to a swtich statement above to add another employee
@@ -92,7 +92,7 @@ function startApp() {
             },
 
         ]).then(engineerInfo => {
-            const engineer = new Engineer(engineerInfo.name, engineerInfo.Id, engineerInfo.email, engineerInfo.github)
+            const engineer = new Engineer(engineerInfo.name, engineerInfo.id, engineerInfo.email, engineerInfo.github)
             teamArray.push(engineer)
             newEmployee()
         })
@@ -122,7 +122,7 @@ function startApp() {
                 message: "Enter the intern's school.",
             },
         ]).then(internInfo => {
-            const intern = new Intern(internInfo.name, internInfo.Id, internInfo.email, internInfo.school)
+            const intern = new Intern(internInfo.name, internInfo.id, internInfo.email, internInfo.school)
             teamArray.push(intern)
             newEmployee()
         })
