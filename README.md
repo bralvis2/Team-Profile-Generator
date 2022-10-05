@@ -9,7 +9,7 @@
  
  ## How To
 
- [DEMO](https://drive.google.com/file/d/1LRUc6w_XEUEPEOBsxr-lzLB6NrNe0s04/view)
+ [DEMO](https://drive.google.com/file/d/1N-BnQ92Sy-FERtRzORgbWjgrmUVweNSS/view)
 
  To use this application, users should have node.js installed. Additionally, users should install the npm Inquirer package. This application generates the index.HTML from the terminal command-line. 
 
@@ -23,6 +23,8 @@
 
 * Step four: Generate the index.html
 ![generated application](./img/intern.jpeg)
+
+![generated application](./img/team.png)
 
 ## Testing
 
